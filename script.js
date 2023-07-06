@@ -1,5 +1,6 @@
 let container = document.querySelector('.container');
 let newGrid = document.querySelector('.newGrid');
+let hoverEnabled = false;
 
 let createGrid = function(squares){
 
@@ -16,9 +17,21 @@ let createGrid = function(squares){
 
 createGrid(60);
 
+container.addEventListener('click', () => {
+    hoverEnabled = !hoverEnabled;
+})
+
 container.addEventListener('mouseover', (e) => {
-    if(e.target !== container){
-        e.target.classList.add('color-active');
+    if(e.target !== container && hoverEnabled){
+        var red = Math.floor(Math.random() * 256);
+        var green = Math.floor(Math.random() * 256);
+        var blue = Math.floor(Math.random() * 256);
+      
+        // Create the RGB color string
+        var color = 'rgb(' + red + ', ' + green + ', ' + blue + ')';
+      
+        // Apply the color to the div
+        e.target.style.backgroundColor = color;
     }
 })
 
