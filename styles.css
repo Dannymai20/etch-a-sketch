@@ -17,3 +17,7 @@
     box-sizing: border-box;
 }
 
+.square {
+    transition: background-color 0.3s ease;
+}
+

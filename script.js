@@ -1,5 +1,6 @@
 let container = document.querySelector('.container');
 let newGrid = document.querySelector('.newGrid');
+let erase = document.querySelector('.erase');
 let hoverEnabled = false;
 
 let createGrid = function(squares){
@@ -19,10 +20,11 @@ createGrid(60);
 
 container.addEventListener('click', () => {
     hoverEnabled = !hoverEnabled;
-})
+});
 
+//create colors on click and hover
 container.addEventListener('mouseover', (e) => {
-    if(e.target !== container && hoverEnabled){
+    if(e.target.classList.contains('square') && hoverEnabled){
         var red = Math.floor(Math.random() * 256);
         var green = Math.floor(Math.random() * 256);
         var blue = Math.floor(Math.random() * 256);
@@ -35,6 +37,7 @@ container.addEventListener('mouseover', (e) => {
     }
 })
 
+//create a new grid
 newGrid.addEventListener('click', () => {
      let gridSize = prompt('What grid size would you like?');
          if(gridSize >= 100){
@@ -51,7 +54,18 @@ newGrid.addEventListener('click', () => {
     });
 
     createGrid(gridSize);
+});
 
+//erases board 
+erase.addEventListener('click', () => {
+
+    let elements = container.getElementsByClassName('square');
+    let squareArray = Array.from(elements);
+
+    squareArray.forEach((square) => {
+        square.style.backgroundColor = 'white';
+    });
+    
 });
 
 
